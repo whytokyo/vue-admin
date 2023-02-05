@@ -1,5 +1,6 @@
 package com.yanxi;
 
+import com.yanxi.system.entity.User;
 import com.yanxi.system.mapper.UserMapper;
 import com.yanxi.system.security.LoginUser;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest
 class VueAdminApplicationTests {
@@ -38,7 +40,10 @@ class VueAdminApplicationTests {
 
     @Test
     void test() {
-        System.out.println(passwordEncoder.encode("123456"));
+        User user = new User();
+        List<User> list = userMapper.selectUserByCondition(user);
+        for (User u : list) {
+            System.out.println(u);
+        }
     }
-
 }

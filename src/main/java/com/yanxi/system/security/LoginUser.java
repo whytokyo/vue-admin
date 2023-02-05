@@ -28,8 +28,9 @@ public class LoginUser implements UserDetails {
 
     private User user;
 
-    public LoginUser(User user) {
+    public LoginUser(User user, Set<String> permissions) {
         this.user = user;
+        this.permissions = permissions;
     }
 
     @Override

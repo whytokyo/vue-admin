@@ -24,4 +24,22 @@ public class User extends BaseEntity implements Serializable {
 
     private String password;
 
+    public User(Long deptId, String userName, String nickName, String password) {
+        this.deptId = deptId;
+        this.userName = userName;
+        this.nickName = nickName;
+        this.password = password;
+    }
+
+    public User(Long deptId) {
+        this.deptId = deptId;
+    }
+
+    public User() {
+    }
+
+    public User(Long userId, Long deptId) {
+        this.userId = userId;
+        this.deptId = deptId;
+    }
 }

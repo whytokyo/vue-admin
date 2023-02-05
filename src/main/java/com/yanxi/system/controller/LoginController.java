@@ -17,7 +17,7 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/login")
-    public ResponseResult<Map> login(@RequestBody LoginBody loginBody) {
+    public ResponseResult login(@RequestBody LoginBody loginBody) {
         String token = loginService.login(loginBody.getUsername(), loginBody.getPassword());
         Map<String, Object> result = new HashMap<>();
         result.put("token", token);

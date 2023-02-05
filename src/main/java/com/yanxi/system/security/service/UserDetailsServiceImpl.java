@@ -11,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -31,6 +34,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     public UserDetails createLoginUser(User user) {
 //        userService.updateUser(user);
-        return new LoginUser(user);
+        Set<String> perms = new HashSet<String>();
+        perms.add("*:*:*");
+        return new LoginUser(user, perms);
     }
 }
