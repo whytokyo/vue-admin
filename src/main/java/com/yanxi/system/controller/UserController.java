@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.yanxi.common.model.dto.ResponseResult;
 import com.yanxi.system.entity.User;
+import com.yanxi.system.entity.VO.UserInfo;
+import com.yanxi.system.security.service.TokenService;
 import com.yanxi.system.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +17,14 @@ import java.util.List;
 public class UserController {
     @Resource
     private UserService userService;
+    @Resource
+    private TokenService tokenService;
     @GetMapping("/list")
     public ResponseResult list(@RequestParam(name = "pageNum", defaultValue = "1") Integer pageNum,
                                @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize, User user) {
         PageHelper.startPage(pageNum, pageSize);
-        List<User> list = userService.selectUserByCondition(user);
-        PageInfo<User> page = new PageInfo<>(list);
+        List<UserInfo> list = userService.selectUserByCondition(user);
+        PageInfo<UserInfo> page = new PageInfo<>(list);
         return ResponseResult.okResult(page);
     }
     @PutMapping("/add")

@@ -1,6 +1,7 @@
 package com.yanxi.system.service.impl;
 
 import com.yanxi.system.entity.User;
+import com.yanxi.system.entity.VO.UserInfo;
 import com.yanxi.system.mapper.UserMapper;
 import com.yanxi.system.service.UserService;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> selectUserByCondition(User user) {
+    public List<UserInfo> selectUserByCondition(User user) {
         return userMapper.selectUserByCondition(user);
     }
 

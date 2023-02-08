@@ -4,8 +4,10 @@
     <select id="selectUserByUserName" parameterType="string" resultType="User">
         select * from sys_user where user_name = #{userName}
     </select>
-    <select id="selectUserByCondition" resultType="User">
-        select * from sys_user
+    <select id="selectUserByCondition" resultType="UserInfo">
+        select user_id, user_name, nick_name, password, phonenumber, sd.email, su.dept_id, dept_name
+        from sys_user su
+        left join sys_dept sd on su.dept_id = sd.dept_id
         <where>
             <if test="userId != null and userId != ''">
                 and user_id = #{userId}

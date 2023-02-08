@@ -1,6 +1,7 @@
 package com.yanxi;
 
 import com.yanxi.system.entity.User;
+import com.yanxi.system.entity.VO.UserInfo;
 import com.yanxi.system.mapper.UserMapper;
 import com.yanxi.system.security.LoginUser;
 import org.junit.jupiter.api.Test;
@@ -41,8 +42,8 @@ class VueAdminApplicationTests {
     @Test
     void test() {
         User user = new User();
-        List<User> list = userMapper.selectUserByCondition(user);
-        for (User u : list) {
+        List<UserInfo> list = userMapper.selectUserByCondition(user);
+        for (UserInfo u : list) {
             System.out.println(u);
         }
     }

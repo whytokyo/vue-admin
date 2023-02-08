@@ -11,6 +11,13 @@ import java.util.Set;
 @Data
 public class LoginUser implements UserDetails {
 
+    private Long userId;
+
+    /**
+     * 部门ID
+     */
+    private Long deptId;
+
     private String token;
 
     /**

@@ -21,8 +21,10 @@ public class LoginService {
     public String login(String username, String password) {
         Authentication authentication = null;
         try {
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
+//            AuthenticationContextHolder.setContext(authenticationToken);
             // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
-            authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authentication = authenticationManager.authenticate(authenticationToken);
         } catch (Exception e) {
             throw new RuntimeException("登录失败");
         }
